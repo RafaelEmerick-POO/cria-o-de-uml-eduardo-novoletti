@@ -1,18 +1,16 @@
 class Equipamento:
-    def __init__(self, tag, descricao, ativo):
-        self._tag = tag
-        self._descricao = descricao
-        self._ativo = ativo
+    def __init__(self, id_equipamento: str, nome: str, modelo: str):
+        self.id_equipamento = id_equipamento
+        self.nome = nome
+        self.modelo = modelo
+        self.status_operacional = False
 
-    def ligar(self):
-        self._ativo = True
+    def ligar(self) -> bool:
+        self.status_operacional = True
+        print(f"[{self.nome}] Equipamento ligado com sucesso.")
+        return self.status_operacional
 
-    def desligar(self):
-        self._ativo = False
-
-    @property
-    def tag(self):
-        return self._tag
-
-    def exibir_resumo(self):
-        print(f"[Equipamento] {self._tag} - {self._descricao} - ativo={self._ativo}")
+    def desligar(self) -> bool:
+        self.status_operacional = False
+        print(f"[{self.nome}] Equipamento desligado.")
+        return self.status_operacional
